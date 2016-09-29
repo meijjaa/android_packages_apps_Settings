@@ -264,12 +264,18 @@
     <string name="bluetooth_ask_enablement">An app wants to turn Bluetooth ON for this device.</string>
 
     <!-- Strings for asking to the user whether to allow an app to enable discovery mode -->
+    <string name="bluetooth_ask_discovery" product="mbx">An app wants to make your media box visible to other Bluetooth devices for <xliff:g id="timeout">%1$d</xliff:g> seconds.</string>
+    <!-- Strings for asking to the user whether to allow an app to enable discovery mode -->
     <string name="bluetooth_ask_discovery" product="tablet">An app wants to make your tablet visible to other Bluetooth devices for <xliff:g id="timeout">%1$d</xliff:g> seconds.</string>
+    <!-- Strings for asking to the user whether to allow an app to enable discovery mode -->
+    <string name="bluetooth_ask_discovery" product="tv">An app wants to make your TV visible to other Bluetooth devices for <xliff:g id="timeout">%1$d</xliff:g> seconds.</string>
     <!-- Strings for asking to the user whether to allow an app to enable discovery mode -->
     <string name="bluetooth_ask_discovery" product="default">An app wants to make your phone visible to other Bluetooth devices for <xliff:g id="timeout">%1$d</xliff:g> seconds.</string>
 
     <!-- Strings for asking to the user whether to allow an app to enable lasting discovery mode  -->
+    <string name="bluetooth_ask_lasting_discovery" product="mbx">An app wants to make your media box visible to other Bluetooth devices. You can change this later in Bluetooth settings.</string>
     <string name="bluetooth_ask_lasting_discovery" product="tablet">An app wants to make your tablet visible to other Bluetooth devices. You can change this later in Bluetooth settings.</string>
+    <string name="bluetooth_ask_lasting_discovery" product="tv">An app wants to make your TV visible to other Bluetooth devices. You can change this later in Bluetooth settings.</string>
     <string name="bluetooth_ask_lasting_discovery" product="default">An app wants to make your phone visible to other Bluetooth devices. You can change this later in Bluetooth settings.</string>
 
     <!-- Strings for asking to the user whether to allow an app to start broadcasting -->
@@ -280,12 +286,18 @@
     <string name="bluetooth_broadcasting_explaination" product="default">When this feature is turned on, your phone can communicate with other devices nearby.\n\nBroadcasting uses low-power Bluetooth signals.</string>
 
     <!-- Strings for asking to the user whether to allow an app to enable bluetooth and discovery mode -->
+    <string name="bluetooth_ask_enablement_and_discovery" product="mbx">An app wants to turn on Bluetooth and make your media box visible to other devices for <xliff:g id="timeout">%1$d</xliff:g> seconds.</string>
+    <!-- Strings for asking to the user whether to allow an app to enable bluetooth and discovery mode -->
     <string name="bluetooth_ask_enablement_and_discovery" product="tablet">An app wants to turn on Bluetooth and make your tablet visible to other devices for <xliff:g id="timeout">%1$d</xliff:g> seconds.</string>
+    <!-- Strings for asking to the user whether to allow an app to enable bluetooth and discovery mode -->
+    <string name="bluetooth_ask_enablement_and_discovery" product="tv">An app wants to turn on Bluetooth and make your TV visible to other devices for <xliff:g id="timeout">%1$d</xliff:g> seconds.</string>
     <!-- Strings for asking to the user whether to allow an app to enable bluetooth and discovery mode -->
     <string name="bluetooth_ask_enablement_and_discovery" product="default">An app wants to turn on Bluetooth and make your phone visible to other devices for <xliff:g id="timeout">%1$d</xliff:g> seconds.</string>
 
     <!-- Strings for asking to the user whether to allow an app to enable bluetooth and discovery mode -->
+    <string name="bluetooth_ask_enablement_and_lasting_discovery" product="mbx">An app wants to turn on Bluetooth and make your media box visible to other devices. You can change this later in Bluetooth settings.</string>
     <string name="bluetooth_ask_enablement_and_lasting_discovery" product="tablet">An app wants to turn on Bluetooth and make your tablet visible to other devices. You can change this later in Bluetooth settings.</string>
+    <string name="bluetooth_ask_enablement_and_lasting_discovery" product="tv">An app wants to turn on Bluetooth and make your TV visible to other devices. You can change this later in Bluetooth settings.</string>
     <string name="bluetooth_ask_enablement_and_lasting_discovery" product="default">An app wants to turn on Bluetooth and make your phone visible to other devices. You can change this later in Bluetooth settings.</string>
 
     <!-- Strings for msg to display to user while bluetooth is turning on [CHAR LIMIT=60] -->
@@ -550,7 +562,11 @@
     <!-- The title of the activity to adjust display settings -->
     <string name="display_label">Screen</string>
     <!-- The title of the activity to see phone info -->
+    <string name="phone_info_label" product="mbx">Media box info</string>
+    <!-- The title of the activity to see phone info -->
     <string name="phone_info_label" product="tablet">Tablet info</string>
+    <!-- The title of the activity to see phone info -->
+    <string name="phone_info_label" product="tv">TV info</string>
     <!-- The title of the activity to see phone info -->
     <string name="phone_info_label" product="default">Phone info</string>
     <!-- The title of the activity to adjust SD card settings [CHAR LIMIT=25] -->
@@ -612,8 +628,12 @@
     <string name="roaming_turn_it_on_button">Turn it on</string>
     <!-- mobile network settings screen, message in dialog box that appears when you select the "Data roaming" check box -->
     <string name="roaming_warning">You may incur significant charges.</string>
+    <!-- mobile network settings screen, message in dialog box that appears when you select the "Data roaming" check box. This is for multiuser media box [CHAR LIMIT=none] -->
+    <string name="roaming_warning_multiuser" product="mbx">When you allow data roaming, you may incur significant roaming charges!\n\nThis setting affects all users on this media box.</string>
     <!-- mobile network settings screen, message in dialog box that appears when you select the "Data roaming" check box. This is for multiuser tablets [CHAR LIMIT=none] -->
     <string name="roaming_warning_multiuser" product="tablet">When you allow data roaming, you may incur significant roaming charges!\n\nThis setting affects all users on this tablet.</string>
+    <!-- mobile network settings screen, message in dialog box that appears when you select the "Data roaming" check box. This is for multiuser TV [CHAR LIMIT=none] -->
+    <string name="roaming_warning_multiuser" product="tv">When you allow data roaming, you may incur significant roaming charges!\n\nThis setting affects all users on this TV.</string>
     <!-- mobile network settings screen, message in dialog box that appears when you select the "Data roaming" check box. This is for multiuser phones [CHAR LIMIT=none] -->
     <string name="roaming_warning_multiuser" product="default">When you allow data roaming, you may incur significant roaming charges!\n\nThis setting affects all users on this phone.</string>
     <!-- mobile network settings screen, title of dialog box that appears when you select the "Data roaming" check box -->
@@ -750,14 +770,22 @@
     <string name="security_settings_fingerprint_enroll_introduction_cancel_setup">Skip</string>
     <!-- Button text to continue to the next screen from the introduction (this string variant is used while in setup wizard) [CHAR LIMIT=22] -->
     <string name="security_settings_fingerprint_enroll_introduction_continue_setup">Add fingerprint</string>
+    <!-- Dialog text shown when the user tries to skip setting up a screen lock, warning them of potential consequences of not doing so, including loss of factory reset protection. (media box) [CHAR LIMIT=NONE] -->
+    <string name="lock_screen_intro_skip_dialog_text_frp" product="mbx">Device protection features will not be activated. You won\u2019t be able to prevent others from using this media box if it\u2019s lost, stolen or wiped.</string>
     <!-- Dialog text shown when the user tries to skip setting up a screen lock, warning them of potential consequences of not doing so, including loss of factory reset protection. (tablet) [CHAR LIMIT=NONE] -->
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet">Device protection features will not be activated. You won\u2019t be able to prevent others from using this tablet if it\u2019s lost, stolen or wiped.</string>
+    <!-- Dialog text shown when the user tries to skip setting up a screen lock, warning them of potential consequences of not doing so, including loss of factory reset protection. (TV) [CHAR LIMIT=NONE] -->
+    <string name="lock_screen_intro_skip_dialog_text_frp" product="tv">Device protection features will not be activated. You won\u2019t be able to prevent others from using this TV if it\u2019s lost, stolen or wiped.</string>
     <!-- Dialog text shown when the user tries to skip setting up a screen lock, warning them of potential consequences of not doing so, including loss of factory reset protection. (device) [CHAR LIMIT=NONE] -->
     <string name="lock_screen_intro_skip_dialog_text_frp" product="device">Device protection features will not be activated. You won\u2019t be able to prevent others from using this device if it\u2019s lost, stolen or wiped.</string>
     <!-- Dialog text shown when the user tries to skip setting up a screen lock, warning them of potential consequences of not doing so, including loss of factory reset protection. (phone) [CHAR LIMIT=NONE] -->
     <string name="lock_screen_intro_skip_dialog_text_frp" product="default">Device protection features will not be activated. You won\u2019t be able to prevent others from using this phone if it\u2019s lost, stolen or wiped.</string>
+    <!-- Dialog text shown when the user tries to skip setting up a screen lock, warning them of potential consequences of not doing so. (media box) [CHAR LIMIT=NONE] -->
+    <string name="lock_screen_intro_skip_dialog_text" product="mbx">Device protection features will not be activated. You won\u2019t be able to prevent others from using this media box if it\u2019s lost or stolen.</string>
     <!-- Dialog text shown when the user tries to skip setting up a screen lock, warning them of potential consequences of not doing so. (tablet) [CHAR LIMIT=NONE] -->
     <string name="lock_screen_intro_skip_dialog_text" product="tablet">Device protection features will not be activated. You won\u2019t be able to prevent others from using this tablet if it\u2019s lost or stolen.</string>
+    <!-- Dialog text shown when the user tries to skip setting up a screen lock, warning them of potential consequences of not doing so. (TV) [CHAR LIMIT=NONE] -->
+    <string name="lock_screen_intro_skip_dialog_text" product="tv">Device protection features will not be activated. You won\u2019t be able to prevent others from using this TV if it\u2019s lost or stolen.</string>
     <!-- Dialog text shown when the user tries to skip setting up a screen lock, warning them of potential consequences of not doing so. (device) [CHAR LIMIT=NONE] -->
     <string name="lock_screen_intro_skip_dialog_text" product="device">Device protection features will not be activated. You won\u2019t be able to prevent others from using this device if it\u2019s lost or stolen.</string>
     <!-- Dialog text shown when the user tries to skip setting up a screen lock, warning them of potential consequences of not doing so. (phone) [CHAR LIMIT=NONE] -->
@@ -850,13 +878,26 @@
     <string name="crypt_keeper_settings_title">Encryption</string>
 
     <!-- Title of the preferences item to control encryption -->
+    <string name="crypt_keeper_encrypt_title" product="mbx">Encrypt media box</string>
+    <!-- Title of the preferences item to control encryption -->
     <string name="crypt_keeper_encrypt_title" product="tablet">Encrypt tablet</string>
+    <!-- Title of the preferences item to control encryption -->
+    <string name="crypt_keeper_encrypt_title" product="tv">Encrypt TV</string>
     <!-- Title of the preferences item to control encryption -->
     <string name="crypt_keeper_encrypt_title" product="default">Encrypt phone</string>
 
     <!-- Summary of the preferences item to control encryption, when encryption is active -->
     <string name="crypt_keeper_encrypted_summary">Encrypted</string>
 
+    <!-- Informational text in the first confirmation screen before starting device encryption -->
+    <string name="crypt_keeper_desc" product="mbx">
+    You can encrypt your accounts, settings, downloaded apps and their data,
+    media, and other files. After you encrypt your media box, assuming you\u2019ve set up a screen lock
+    (that is, a pattern or numeric PIN or password), you\u2019ll need to unlock the screen to decrypt
+    the tablet every time you power it on. The only other way to decrypt is to perform a factory
+    data reset, erasing all your data.\n\nEncryption takes an hour or more. You must start with
+    a charged battery and keep your media box plugged in throughout the process. If you interrupt it,
+    you\u2019ll lose some or all of your data</string>
     <!-- Informational text in the first confirmation screen before starting device encryption -->
     <string name="crypt_keeper_desc" product="tablet">
     You can encrypt your accounts, settings, downloaded apps and their data,
@@ -865,6 +906,15 @@
     the tablet every time you power it on. The only other way to decrypt is to perform a factory
     data reset, erasing all your data.\n\nEncryption takes an hour or more. You must start with
     a charged battery and keep your tablet plugged in throughout the process. If you interrupt it,
+    you\u2019ll lose some or all of your data</string>
+    <!-- Informational text in the first confirmation screen before starting device encryption -->
+    <string name="crypt_keeper_desc" product="tv">
+    You can encrypt your accounts, settings, downloaded apps and their data,
+    media, and other files. After you encrypt your TV, assuming you\u2019ve set up a screen lock
+    (that is, a pattern or numeric PIN or password), you\u2019ll need to unlock the screen to decrypt
+    the tablet every time you power it on. The only other way to decrypt is to perform a factory
+    data reset, erasing all your data.\n\nEncryption takes an hour or more. You must start with
+    a charged battery and keep your TV plugged in throughout the process. If you interrupt it,
     you\u2019ll lose some or all of your data</string>
     <!-- Informational text in the first confirmation screen before starting device encryption -->
     <string name="crypt_keeper_desc" product="default">
@@ -877,7 +927,11 @@
     you\u2019ll lose some or all of your data.</string>
 
     <!-- Button text to start encryption process -->
+    <string name="crypt_keeper_button_text" product="mbx">Encrypt media box</string>
+    <!-- Button text to start encryption process -->
     <string name="crypt_keeper_button_text" product="tablet">Encrypt tablet</string>
+    <!-- Button text to start encryption process -->
+    <string name="crypt_keeper_button_text" product="tv">Encrypt TV</string>
     <!-- Button text to start encryption process -->
     <string name="crypt_keeper_button_text" product="default">Encrypt phone</string>
 
@@ -895,9 +949,19 @@
     <!-- Title of the final confirmation screen before starting device encryption -->
     <string name="crypt_keeper_confirm_title">Encrypt?</string>
     <!-- Warning text in the final confirmation screen before starting device encryption -->
+    <string name="crypt_keeper_final_desc" product="mbx">
+    The encryption operation is irreversible and if you interrupt it, you\u2019ll lose data.
+    Encryption takes an hour or more, during which the media box will restart several times.
+    </string>
+    <!-- Warning text in the final confirmation screen before starting device encryption -->
     <string name="crypt_keeper_final_desc" product="tablet">
     The encryption operation is irreversible and if you interrupt it, you\u2019ll lose data.
     Encryption takes an hour or more, during which the tablet will restart several times.
+    </string>
+    <!-- Warning text in the final confirmation screen before starting device encryption -->
+    <string name="crypt_keeper_final_desc" product="tv">
+    The encryption operation is irreversible and if you interrupt it, you\u2019ll lose data.
+    Encryption takes an hour or more, during which the TV will restart several times.
     </string>
     <!-- Warning text in the final confirmation screen before starting device encryption -->
     <string name="crypt_keeper_final_desc" product="default">
@@ -909,17 +973,29 @@
     <string name="crypt_keeper_setup_title">Encrypting</string>
 
     <!-- Informational text on the progress screen while encrypting the device -->
+    <string name="crypt_keeper_setup_description" product="mbx">Wait while your media box
+    is being encrypted. <xliff:g id="percent" example="50">^1</xliff:g>% complete.</string>
+    <!-- Informational text on the progress screen while encrypting the device -->
     <string name="crypt_keeper_setup_description" product="tablet">Wait while your tablet
+    is being encrypted. <xliff:g id="percent" example="50">^1</xliff:g>% complete.</string>
+    <!-- Informational text on the progress screen while encrypting the device -->
+    <string name="crypt_keeper_setup_description" product="tv">Wait while your TV
     is being encrypted. <xliff:g id="percent" example="50">^1</xliff:g>% complete.</string>
     <!-- Informational text on the progress screen while encrypting the device -->
     <string name="crypt_keeper_setup_description" product="default">Wait while your phone
     is being encrypted. <xliff:g id="percent" example="50">^1</xliff:g>% complete.</string>
+    <string name="crypt_keeper_setup_time_remaining" product="mbx">Wait while your media box
+    is being encrypted. Time remaining: <xliff:g id="duration" example="1:23">^1</xliff:g></string>
     <string name="crypt_keeper_setup_time_remaining" product="tablet">Wait while your tablet
+    is being encrypted. Time remaining: <xliff:g id="duration" example="1:23">^1</xliff:g></string>
+    <string name="crypt_keeper_setup_time_remaining" product="tv">Wait while your TV
     is being encrypted. Time remaining: <xliff:g id="duration" example="1:23">^1</xliff:g></string>
     <string name="crypt_keeper_setup_time_remaining" product="default">Wait while your phone
     is being encrypted. Time remaining: <xliff:g id="duration" example="1:23">^1</xliff:g></string>
 
+    <string name="crypt_keeper_force_power_cycle" product="mbx">To unlock your media box, turn it off and then on.</string>
     <string name="crypt_keeper_force_power_cycle" product="tablet">To unlock your tablet, turn it off and then on.</string>
+    <string name="crypt_keeper_force_power_cycle" product="tv">To unlock your TV, turn it off and then on.</string>
     <string name="crypt_keeper_force_power_cycle" product="default">To unlock your phone, turn it off and then on.</string>
 
 
@@ -935,12 +1011,30 @@
     <string name="crypt_keeper_failed_title">Encryption unsuccessful</string>
 
     <!-- Informational text when encryption fails -->
+    <string name="crypt_keeper_failed_summary" product="mbx">
+      Encryption was interrupted and can\u2019t complete. As a result, the data on
+      your media box is no longer accessible.
+      \n\n
+      To resume using your media box, you need to perform a factory reset.
+      When you set up your media box after the reset, you\u2019ll have an opportunity
+      to restore any data that was backed up to your Google Account.
+    </string>
+    <!-- Informational text when encryption fails -->
     <string name="crypt_keeper_failed_summary" product="tablet">
       Encryption was interrupted and can\u2019t complete. As a result, the data on
       your tablet is no longer accessible.
       \n\n
       To resume using your tablet, you need to perform a factory reset.
       When you set up your tablet after the reset, you\u2019ll have an opportunity
+      to restore any data that was backed up to your Google Account.
+    </string>
+    <!-- Informational text when encryption fails -->
+    <string name="crypt_keeper_failed_summary" product="tv">
+      Encryption was interrupted and can\u2019t complete. As a result, the data on
+      your TV is no longer accessible.
+      \n\n
+      To resume using your TV, you need to perform a factory reset.
+      When you set up your TV after the reset, you\u2019ll have an opportunity
       to restore any data that was backed up to your Google Account.
     </string>
 
@@ -957,11 +1051,27 @@
     <string name="crypt_keeper_data_corrupt_title">Decryption unsuccessful</string>
 
     <!-- Informational text when encryption fails -->
+    <string name="crypt_keeper_data_corrupt_summary" product="mbx">
+      The password you entered is correct, but unfortunately your data is
+      corrupt.
+      \n\nTo resume using your media box, you need to perform a factory reset.
+      When you set up your media box after the reset, you\u2019ll have an opportunity
+      to restore any data that was backed up to your Google Account.
+    </string>
+    <!-- Informational text when encryption fails -->
     <string name="crypt_keeper_data_corrupt_summary" product="tablet">
       The password you entered is correct, but unfortunately your data is
       corrupt.
       \n\nTo resume using your tablet, you need to perform a factory reset.
       When you set up your tablet after the reset, you\u2019ll have an opportunity
+      to restore any data that was backed up to your Google Account.
+    </string>
+    <!-- Informational text when encryption fails -->
+    <string name="crypt_keeper_data_corrupt_summary" product="tv">
+      The password you entered is correct, but unfortunately your data is
+      corrupt.
+      \n\nTo resume using your TV, you need to perform a factory reset.
+      When you set up your TV after the reset, you\u2019ll have an opportunity
       to restore any data that was backed up to your Google Account.
     </string>
 
@@ -996,8 +1106,12 @@
     <!--  Title for security picker to choose the profile unlock method: None/Pattern/PIN/Password [CHAR LIMIT=22] -->
     <string name="lock_settings_picker_title_profile">Choose work lock</string>
 
+    <!--  Title for security picker in setup wizard to choose the unlock method: None/Pattern/PIN/Password (media box) [CHAR LIMIT=22] -->
+    <string name="setup_lock_settings_picker_title" product="mbx">Protect your media box</string>
     <!--  Title for security picker in setup wizard to choose the unlock method: None/Pattern/PIN/Password (tablet) [CHAR LIMIT=22] -->
     <string name="setup_lock_settings_picker_title" product="tablet">Protect your tablet</string>
+    <!--  Title for security picker in setup wizard to choose the unlock method: None/Pattern/PIN/Password (TV) [CHAR LIMIT=22] -->
+    <string name="setup_lock_settings_picker_title" product="tv">Protect your TV</string>
     <!--  Title for security picker in setup wizard to choose the unlock method: None/Pattern/PIN/Password (device) [CHAR LIMIT=22] -->
     <string name="setup_lock_settings_picker_title" product="device">Protect your device</string>
     <!--  Title for security picker in setup wizard to choose the unlock method: None/Pattern/PIN/Password (phone) [CHAR LIMIT=22] -->
@@ -1006,8 +1120,12 @@
     <!-- Title for screen in setup wizard, prompting user to choose the their backup screen lock method [CHAR LIMIT=NONE] -->
     <string name="setup_lock_settings_picker_fingerprint_message">Your fingerprint may be less secure than a strong pattern, PIN, or password. For added security, set up a backup screen lock.</string>
 
+    <!-- Description text for screen in setup wizard asking user to set up screen lock, explaining to the user how setting up a screen lock protect them from losing data. (media box) [CHAR LIMIT=NONE] -->
+    <string name="setup_lock_settings_picker_message" product="mbx">Prevent others from using this media box without your permission by activating device protection features. Choose the screen lock you want to use.</string>
     <!-- Description text for screen in setup wizard asking user to set up screen lock, explaining to the user how setting up a screen lock protect them from losing data. (tablet) [CHAR LIMIT=NONE] -->
     <string name="setup_lock_settings_picker_message" product="tablet">Prevent others from using this tablet without your permission by activating device protection features. Choose the screen lock you want to use.</string>
+    <!-- Description text for screen in setup wizard asking user to set up screen lock, explaining to the user how setting up a screen lock protect them from losing data. (TV) [CHAR LIMIT=NONE] -->
+    <string name="setup_lock_settings_picker_message" product="tv">Prevent others from using this TV without your permission by activating device protection features. Choose the screen lock you want to use.</string>
     <!-- Description text for screen in setup wizard asking user to set up screen lock, explaining to the user how setting up a screen lock protect them from losing data. (device) [CHAR LIMIT=NONE] -->
     <string name="setup_lock_settings_picker_message" product="device">Prevent others from using this device without your permission by activating device protection features. Choose the screen lock you want to use.</string>
     <!-- Description text for screen in setup wizard asking user to set up screen lock, explaining to the user how setting up a screen lock protect them from losing data. (phone) [CHAR LIMIT=NONE] -->
@@ -1395,7 +1513,11 @@
     <!-- Bluetooth settings.  Message for disconnecting from the PAN profile (user role). [CHAR LIMIT=80] -->
     <string name="bluetooth_disconnect_pan_user_profile">Internet access via <xliff:g id="device_name">%1$s</xliff:g> will be disconnected.</string>
     <!-- Bluetooth settings.  Message for disconnecting from the PAN profile (NAP role). [CHAR LIMIT=80] -->
+    <string name="bluetooth_disconnect_pan_nap_profile" product="mbx"><xliff:g id="device_name">%1$s</xliff:g> will be disconnected from sharing this media box\u2019s Internet connection.</string>
+    <!-- Bluetooth settings.  Message for disconnecting from the PAN profile (NAP role). [CHAR LIMIT=80] -->
     <string name="bluetooth_disconnect_pan_nap_profile" product="tablet"><xliff:g id="device_name">%1$s</xliff:g> will be disconnected from sharing this tablet\u2019s Internet connection.</string>
+    <!-- Bluetooth settings.  Message for disconnecting from the PAN profile (NAP role). [CHAR LIMIT=80] -->
+    <string name="bluetooth_disconnect_pan_nap_profile" product="tv"><xliff:g id="device_name">%1$s</xliff:g> will be disconnected from sharing this TV\u2019s Internet connection.</string>
     <!-- Bluetooth settings.  Message for disconnecting from the PAN profile (NAP role). [CHAR LIMIT=80] -->
     <string name="bluetooth_disconnect_pan_nap_profile" product="default"><xliff:g id="device_name">%1$s</xliff:g> will be disconnected from sharing this phone\u2019s Internet connection.</string>
 
@@ -1485,8 +1607,12 @@
     <!-- NFC settings -->
     <!-- Used in the 1st-level settings screen to turn on NFC -->
     <string name="nfc_quick_toggle_title">NFC</string>
+    <!-- Description of NFC in the 1st level settings screen, for a media box. [CHAR LIMIT=NONE] -->
+    <string name="nfc_quick_toggle_summary" product="mbx">Allow data exchange when the media box touches another device</string>
     <!-- Description of NFC in the 1st level settings screen, for a tablet. [CHAR LIMIT=NONE] -->
     <string name="nfc_quick_toggle_summary" product="tablet">Allow data exchange when the tablet touches another device</string>
+    <!-- Description of NFC in the 1st level settings screen, for a TV. [CHAR LIMIT=NONE] -->
+    <string name="nfc_quick_toggle_summary" product="tv">Allow data exchange when the TV touches another device</string>
     <!-- Description of NFC in the 1st level settings screen, for a phone. [CHAR LIMIT=NONE] -->
     <string name="nfc_quick_toggle_summary" product="default">Allow data exchange when the phone touches another device</string>
 
@@ -1752,21 +1878,33 @@
     <!-- Button for going to the previous screen or step [CHAR LIMIT=20] -->
     <string name="wifi_dont_skip">Go back</string>
 
+    <!-- Text warning about skipping Wi-Fi with a mobile connect (media box) [CHAR LIMIT=NONE]-->
+    <string name="wifi_skipped_message" product="mbx">WARNING: if you skip Wi\u2011Fi, your media box will only use cellular data for initial downloads and updates. To avoid possible data charges, connect to Wi\u2011Fi.</string>
     <!-- Text warning about skipping Wi-Fi with a mobile connect (tablet) [CHAR LIMIT=NONE]-->
     <string name="wifi_skipped_message" product="tablet">WARNING: if you skip Wi\u2011Fi, your tablet will only use cellular data for initial downloads and updates. To avoid possible data charges, connect to Wi\u2011Fi.</string>
+    <!-- Text warning about skipping Wi-Fi with a mobile connect (TV) [CHAR LIMIT=NONE]-->
+    <string name="wifi_skipped_message" product="tv">WARNING: if you skip Wi\u2011Fi, your TV will only use cellular data for initial downloads and updates. To avoid possible data charges, connect to Wi\u2011Fi.</string>
     <!-- Text warning about skipping Wi-Fi with a mobile connect (device) [CHAR LIMIT=NONE]-->
     <string name="wifi_skipped_message" product="device">WARNING: if you skip Wi\u2011Fi, your device will only use cellular data for initial downloads and updates. To avoid possible data charges, connect to Wi\u2011Fi.</string>
     <!-- Text warning about skipping Wi-Fi with a mobile connect (phone) [CHAR LIMIT=NONE]-->
     <string name="wifi_skipped_message" product="default">WARNING: if you skip Wi\u2011Fi, your phone will only use cellular data for initial downloads and updates. To avoid possible data charges, connect to Wi\u2011Fi.</string>
 
+    <!-- Text warning about skipping Wi-Fi without a mobile connect (media box) [CHAR LIMIT=NONE] -->
+    <string name="wifi_and_mobile_skipped_message" product="mbx">If you skip Wi\u2011Fi:\n\n<li>Your media box won\u2019t have an Internet connection.</li>\n\n<li>You won\u2019t get software updates until you connect to the Internet.</li>\n\n<li>You can\u2019t activate device protection features at this time.</li></string>
     <!-- Text warning about skipping Wi-Fi without a mobile connect (tablet) [CHAR LIMIT=NONE] -->
     <string name="wifi_and_mobile_skipped_message" product="tablet">If you skip Wi\u2011Fi:\n\n<li>Your tablet won\u2019t have an Internet connection.</li>\n\n<li>You won\u2019t get software updates until you connect to the Internet.</li>\n\n<li>You can\u2019t activate device protection features at this time.</li></string>
+    <!-- Text warning about skipping Wi-Fi without a mobile connect (tablet) [CHAR LIMIT=NONE] -->
+    <string name="wifi_and_mobile_skipped_message" product="tv">If you skip Wi\u2011Fi:\n\n<li>Your TV won\u2019t have an Internet connection.</li>\n\n<li>You won\u2019t get software updates until you connect to the Internet.</li>\n\n<li>You can\u2019t activate device protection features at this time.</li></string>
     <!-- Text warning about skipping Wi-Fi without a mobile connect (device) [CHAR LIMIT=NONE] -->
     <string name="wifi_and_mobile_skipped_message" product="device">If you skip Wi\u2011Fi:\n\n<li>Your device won\u2019t have an Internet connection.</li>\n\n<li>You won\u2019t get software updates until you connect to the Internet.</li>\n\n<li>You can\u2019t activate device protection features at this time.</li></string>
     <!-- Text warning about skipping Wi-Fi without a mobile connect (phone) [CHAR LIMIT=NONE] -->
     <string name="wifi_and_mobile_skipped_message" product="default">If you skip Wi\u2011Fi:\n\n<li>Your phone won\u2019t have an Internet connection.</li>\n\n<li>You won\u2019t get software updates until you connect to the Internet.</li>\n\n<li>You can\u2019t activate device protection features at this time.</li></string>
+    <!-- Text alerting that Wi-Fi couldn't connect (media box) [CHAR LIMIT=NONE] -->
+    <string name="wifi_connect_failed_message" product="mbx">The media box was unable to connect to this Wi\u2011Fi network.</string>
     <!-- Text alerting that Wi-Fi couldn't connect (tablet) [CHAR LIMIT=NONE] -->
     <string name="wifi_connect_failed_message" product="tablet">The tablet was unable to connect to this Wi\u2011Fi network.</string>
+    <!-- Text alerting that Wi-Fi couldn't connect (TV) [CHAR LIMIT=NONE] -->
+    <string name="wifi_connect_failed_message" product="tv">The TV was unable to connect to this Wi\u2011Fi network.</string>
     <!-- Text alerting that Wi-Fi couldn't connect (device) [CHAR LIMIT=NONE] -->
     <string name="wifi_connect_failed_message" product="device">The device was unable to connect to this Wi\u2011Fi network.</string>
     <!-- Text alerting that Wi-Fi couldn't connect (phone) [CHAR LIMIT=NONE] -->
@@ -2062,7 +2200,11 @@
     <!-- Dock audio summary for docked to car dock -->
     <string name="dock_audio_summary_car">Settings for the attached car dock</string>
     <!-- Dock audio summary for undocked -->
+    <string name="dock_audio_summary_none" product="mbx">Media box not docked</string>
+    <!-- Dock audio summary for undocked -->
     <string name="dock_audio_summary_none" product="tablet">Tablet not docked</string>
+    <!-- Dock audio summary for undocked -->
+    <string name="dock_audio_summary_none" product="tv">TV not docked</string>
     <!-- Dock audio summary for undocked -->
     <string name="dock_audio_summary_none" product="default">Phone not docked</string>
     <!-- Dock audio summary for docked to unknown -->
@@ -2070,17 +2212,29 @@
     <!-- Dock not found dialog title -->
     <string name="dock_not_found_title">Dock not found</string>
     <!-- Dock not found dialog text -->
+    <string name="dock_not_found_text" product="mbx">You need to dock the media box before setting up dock audio.</string>
+    <!-- Dock not found dialog text -->
     <string name="dock_not_found_text" product="tablet">You need to dock the tablet before setting up dock audio.</string>
+    <!-- Dock not found dialog text -->
+    <string name="dock_not_found_text" product="tv">You need to dock the TV before setting up dock audio.</string>
     <!-- Dock not found dialog text -->
     <string name="dock_not_found_text" product="default">You need to dock the phone before setting up dock audio.</string>
     <!-- Dock settings screen, dock events SFX setting check box label -->
     <string name="dock_sounds_enable_title">Dock insert sound</string>
     <!-- Dock settings screen, setting option summary text when check box is selected -->
+    <string name="dock_sounds_enable_summary_on" product="mbx">Play sound when inserting or removing media box from dock</string>
+    <!-- Dock settings screen, setting option summary text when check box is selected -->
     <string name="dock_sounds_enable_summary_on" product="tablet">Play sound when inserting or removing tablet from dock</string>
+    <!-- Dock settings screen, setting option summary text when check box is selected -->
+    <string name="dock_sounds_enable_summary_on" product="tv">Play sound when inserting or removing TV from dock</string>
     <!-- Dock settings screen, setting option summary text when check box is selected -->
     <string name="dock_sounds_enable_summary_on" product="default">Play sound when inserting or removing phone from dock</string>
     <!-- Sound settings screen, setting option summary text when check box is clear -->
+    <string name="dock_sounds_enable_summary_off" product="mbx">Don\u2019t play sound when inserting or removing media box from dock</string>
+    <!-- Sound settings screen, setting option summary text when check box is clear -->
     <string name="dock_sounds_enable_summary_off" product="tablet">Don\u2019t play sound when inserting or removing tablet from dock</string>
+    <!-- Sound settings screen, setting option summary text when check box is clear -->
+    <string name="dock_sounds_enable_summary_off" product="tv">Don\u2019t play sound when inserting or removing TV from dock</string>
     <!-- Sound settings screen, setting option summary text when check box is clear -->
     <string name="dock_sounds_enable_summary_off" product="default">Don\u2019t play sound when inserting or removing phone from dock</string>
 
@@ -2106,11 +2260,19 @@
     <!-- Sound & display settings screen, accelerometer-based rotation check box label -->
     <string name="accelerometer_title">Auto-rotate screen</string>
     <!-- Sound & display settings screen, accelerometer-based rotation summary text when check box is selected -->
+    <string name="accelerometer_summary_on" product="mbx">Switch orientation automatically when rotating media box</string>
+    <!-- Sound & display settings screen, accelerometer-based rotation summary text when check box is selected -->
     <string name="accelerometer_summary_on" product="tablet">Switch orientation automatically when rotating tablet</string>
+    <!-- Sound & display settings screen, accelerometer-based rotation summary text when check box is selected -->
+    <string name="accelerometer_summary_on" product="tv">Switch orientation automatically when rotating TV</string>
     <!-- Sound & display settings screen, accelerometer-based rotation summary text when check box is selected -->
     <string name="accelerometer_summary_on" product="default">Switch orientation automatically when rotating phone</string>
     <!-- Sound & display settings screen, accelerometer-based rotation summary text when check box is clear -->
+    <string name="accelerometer_summary_off" product="mbx">Switch orientation automatically when rotating media box</string>
+    <!-- Sound & display settings screen, accelerometer-based rotation summary text when check box is clear -->
     <string name="accelerometer_summary_off" product="tablet">Switch orientation automatically when rotating tablet</string>
+    <!-- Sound & display settings screen, accelerometer-based rotation summary text when check box is clear -->
+    <string name="accelerometer_summary_off" product="tv">Switch orientation automatically when rotating TV</string>
     <!-- Sound & display settings screen, accelerometer-based rotation summary text when check box is clear -->
     <string name="accelerometer_summary_off" product="default">Switch orientation automatically when rotating phone</string>
     <!-- Sound & display settings screen, setting option name to change brightness level -->
@@ -2182,11 +2344,19 @@
     <!-- SIM card lock settings screen, setting check box label  [CHAR LIMIT=40] -->
     <string name="sim_pin_toggle">Lock SIM card</string>
     <!-- SIM card lock settings screen, setting option summary text when SIM lock check box is selected  [CHAR LIMIT=40] -->
+    <string name="sim_lock_on" product="mbx">Require PIN to use media box</string>
+    <!-- SIM card lock settings screen, setting option summary text when SIM lock check box is selected  [CHAR LIMIT=40] -->
     <string name="sim_lock_on" product="tablet">Require PIN to use tablet</string>
+    <!-- SIM card lock settings screen, setting option summary text when SIM lock check box is selected  [CHAR LIMIT=40] -->
+    <string name="sim_lock_on" product="tv">Require PIN to use TV</string>
     <!-- SIM card lock settings screen, setting option summary text when SIM lock check box is selected  [CHAR LIMIT=40] -->
     <string name="sim_lock_on" product="default">Require PIN to use phone</string>
     <!-- SIM card lock settings screen, setting option summary text when SIM lock check box is clear  [CHAR LIMIT=40] -->
+    <string name="sim_lock_off" product="mbx">Require PIN to use media box</string>
+    <!-- SIM card lock settings screen, setting option summary text when SIM lock check box is clear  [CHAR LIMIT=40] -->
     <string name="sim_lock_off" product="tablet">Require PIN to use tablet</string>
+    <!-- SIM card lock settings screen, setting option summary text when SIM lock check box is clear  [CHAR LIMIT=40] -->
+    <string name="sim_lock_off" product="tv">Require PIN to use TV</string>
     <!-- SIM card lock settings screen, setting option summary text when SIM lock check box is clear  [CHAR LIMIT=40] -->
     <string name="sim_lock_off" product="default">Require PIN to use phone</string>
     <!-- SIM card lock settings screen, setting option name to change the SIM PIN  [CHAR LIMIT=40] -->
@@ -2244,7 +2414,11 @@
     <string name="pin_failed">SIM PIN operation failed!</string>
 
     <!-- Advanced (used for diagnostics) device info activity title [CHAR LIMIT=40] -->
+    <string name="device_info_settings" product="mbx">Media box status</string>
+    <!-- Advanced (used for diagnostics) device info activity title [CHAR LIMIT=40] -->
     <string name="device_info_settings" product="tablet">Tablet status</string>
+    <!-- Advanced (used for diagnostics) device info activity title [CHAR LIMIT=40] -->
+    <string name="device_info_settings" product="tv">TV status</string>
     <!-- Advanced (used for diagnostics) device info activity title [CHAR LIMIT=40] -->
     <string name="device_info_settings" product="default">Phone status</string>
 
@@ -2276,8 +2450,12 @@
     <string name="device_status_activity_title">Status</string>
     <!-- About phone screen, title of the item to go into the Phone status screen -->
     <string name="device_status">Status</string>
+    <!-- About media box screen, summary of the item that takes you to media box status screen -->
+    <string name="device_status_summary" product="mbx">Status of the battery, network, and other information</string>
     <!-- About tablet screen, summary of the item that takes you to tablet status screen -->
     <string name="device_status_summary" product="tablet">Status of the battery, network, and other information</string>
+    <!-- About TV screen, summary of the item that takes you to tv status screen -->
+    <string name="device_status_summary" product="tv">Status of the battery, network, and other information</string>
     <!-- About phone screen, summary of the item to go into the phone status screen -->
     <string name="device_status_summary" product="default">Phone number, signal, etc.</string>
     <!-- Main settings screen item's title to go into the storage settings screen [CHAR LIMIT=25] -->
@@ -2296,8 +2474,12 @@
     <string name="status_imei_sv">IMEI SV</string>
     <!-- Do not translate. About phone, status item title -->
     <string name="status_iccid">ICCID</string>
+    <!-- About media box, status item title.  The Mobile Directory Number [CHAR LIMIT=30] -->
+    <string name="status_number" product="mbx">MDN</string>
     <!-- About tablet, status item title.  The Mobile Directory Number [CHAR LIMIT=30] -->
     <string name="status_number" product="tablet">MDN</string>
+    <!-- About TV, status item title.  The Mobile Directory Number [CHAR LIMIT=30] -->
+    <string name="status_number" product="tv">MDN</string>
     <!-- About phone, status item title.  The phone number of the current device [CHAR LIMIT=30] -->
     <string name="status_number" product="default">My phone number</string>
     <!-- About phone, status item title.  The phone MIN number of the current device.-->
@@ -2774,7 +2956,11 @@
     <!-- SD card & phone storage settings screen, setting option name under Internal phone storage heading -->
     <string name="master_clear_title">Factory data reset</string>
     <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
+    <string name="master_clear_desc" product="mbx">"This will erase all data from your media box\u2019s <b>internal storage</b>, including:\n\n<li>Your Google account</li>\n<li>System and app data and settings</li>\n<li>Downloaded apps</li>"</string>
+    <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
     <string name="master_clear_desc" product="tablet">"This will erase all data from your tablet\u2019s <b>internal storage</b>, including:\n\n<li>Your Google account</li>\n<li>System and app data and settings</li>\n<li>Downloaded apps</li>"</string>
+    <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
+    <string name="master_clear_desc" product="tv">"This will erase all data from your TV\u2019s <b>internal storage</b>, including:\n\n<li>Your Google account</li>\n<li>System and app data and settings</li>\n<li>Downloaded apps</li>"</string>
     <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
     <string name="master_clear_desc" product="default">"This will erase all data from your phone\u2019s <b>internal storage</b>, including:\n\n<li>Your Google account</li>\n<li>System and app data and settings</li>\n<li>Downloaded apps"</li></string>
     <!-- SD card & phone storage settings screen, instructions and list of current accounts.  The list of accounts follows this text[CHAR LIMIT=NONE] -->
@@ -2796,7 +2982,11 @@
     <!-- SD card & phone storage settings screen, description for check box to erase USB storage [CHAR LIMIT=NONE] -->
     <string name="erase_external_storage_description" product="default">Erase all the data on the SD card, such as music or photos</string>
     <!-- SD card & phone storage settings screen, button on screen after user selects Factory data reset -->
+    <string name="master_clear_button_text" product="mbx">Reset media box</string>
+    <!-- SD card & phone storage settings screen, button on screen after user selects Factory data reset -->
     <string name="master_clear_button_text" product="tablet">Reset tablet</string>
+    <!-- SD card & phone storage settings screen, button on screen after user selects Factory data reset -->
+    <string name="master_clear_button_text" product="tv">Reset TV</string>
     <!-- SD card & phone storage settings screen, button on screen after user selects Factory data reset -->
     <string name="master_clear_button_text" product="default">Reset phone</string>
     <!-- SD card & phone storage settings screen, message on screen after user selects Reset phone button -->
@@ -2854,21 +3044,37 @@
     <!-- Label for bluetooth tether checkbox [CHAR LIMIT=25]-->
     <string name="bluetooth_tether_checkbox_text">Bluetooth tethering</string>
     <!-- Bluetooth available subtext - shown when Bluetooth tethering is turned on but it is not currently tethered to any devices [CHAR LIMIT=50]-->
+    <string name="bluetooth_tethering_available_subtext" product="mbx">Sharing this media box\u2019s Internet connection</string>
+    <!-- Bluetooth available subtext - shown when Bluetooth tethering is turned on but it is not currently tethered to any devices [CHAR LIMIT=50]-->
     <string name="bluetooth_tethering_available_subtext" product="tablet">Sharing this tablet\u2019s Internet connection</string>
+    <!-- Bluetooth available subtext - shown when Bluetooth tethering is turned on but it is not currently tethered to any devices [CHAR LIMIT=50]-->
+    <string name="bluetooth_tethering_available_subtext" product="tv">Sharing this TV\u2019s Internet connection</string>
     <!-- Bluetooth available subtext - shown when Bluetooth tethering is turned on but it is not currently tethered to any devices [CHAR LIMIT=50]-->
     <string name="bluetooth_tethering_available_subtext" product="default">Sharing this phone\u2019s Internet connection</string>
     <!-- Bluetooth connected subtext - shown when a device is tethered over Bluetooth [CHAR LIMIT=60]-->
+    <string name="bluetooth_tethering_device_connected_subtext" product="mbx">Sharing this media box\u2019s Internet connection to 1 device</string>
+    <!-- Bluetooth connected subtext - shown when a device is tethered over Bluetooth [CHAR LIMIT=60]-->
     <string name="bluetooth_tethering_device_connected_subtext" product="tablet">Sharing this tablet\u2019s Internet connection to 1 device</string>
+    <!-- Bluetooth connected subtext - shown when a device is tethered over Bluetooth [CHAR LIMIT=60]-->
+    <string name="bluetooth_tethering_device_connected_subtext" product="tv">Sharing this TV\u2019s Internet connection to 1 device</string>
     <!-- Bluetooth connected subtext - shown when a device is tethered over Bluetooth [CHAR LIMIT=60]-->
     <string name="bluetooth_tethering_device_connected_subtext" product="default">Sharing this phone\u2019s Internet connection to 1 device</string>
     <!-- Bluetooth connected subtext - shown when multiple devices are tethered over Bluetooth [CHAR LIMIT=60]-->
+    <string name="bluetooth_tethering_devices_connected_subtext" product="mbx">Sharing this media box\u2019s Internet connection to <xliff:g id="connectedDeviceCount">%1$d</xliff:g> devices</string>
+    <!-- Bluetooth connected subtext - shown when multiple devices are tethered over Bluetooth [CHAR LIMIT=60]-->
     <string name="bluetooth_tethering_devices_connected_subtext" product="tablet">Sharing this tablet\u2019s Internet connection to <xliff:g id="connectedDeviceCount">%1$d</xliff:g> devices</string>
+    <!-- Bluetooth connected subtext - shown when multiple devices are tethered over Bluetooth [CHAR LIMIT=60]-->
+    <string name="bluetooth_tethering_devices_connected_subtext" product="tv">Sharing this TV\u2019s Internet connection to <xliff:g id="connectedDeviceCount">%1$d</xliff:g> devices</string>
     <!-- Bluetooth connected subtext - shown when multiple devices are tethered over Bluetooth [CHAR LIMIT=60]-->
     <string name="bluetooth_tethering_devices_connected_subtext" product="default">Sharing this phone\u2019s Internet connection to <xliff:g id="connectedDeviceCount">%1$d</xliff:g> devices</string>
     <!-- Bluetooth tethering off subtext - shown when Bluetooth Tethering is turned off [CHAR LIMIT=50]-->
     <string name="bluetooth_tethering_off_subtext_config">Sharing this <xliff:g id="device_name">%1$d</xliff:g>\u2019s Internet connection</string>
     <!-- Bluetooth tethering off subtext - shown when Bluetooth Tethering is turned off [CHAR LIMIT=50]-->
+    <string name="bluetooth_tethering_off_subtext" product="mbx">Not sharing this media box\u2019s Internet connection</string>
+    <!-- Bluetooth tethering off subtext - shown when Bluetooth Tethering is turned off [CHAR LIMIT=50]-->
     <string name="bluetooth_tethering_off_subtext" product="tablet">Not sharing this tablet\u2019s Internet connection</string>
+    <!-- Bluetooth tethering off subtext - shown when Bluetooth Tethering is turned off [CHAR LIMIT=50]-->
+    <string name="bluetooth_tethering_off_subtext" product="tv">Not sharing this TV\u2019s Internet connection</string>
     <!-- Bluetooth tethering off subtext - shown when Bluetooth Tethering is turned off [CHAR LIMIT=50]-->
     <string name="bluetooth_tethering_off_subtext" product="default">Not sharing this phone\u2019s Internet connection</string>
     <!-- Bluetooth errored subtext - shown when Bluetooth is broken for some reason [CHAR LIMIT=50]-->
@@ -2969,8 +3175,12 @@
     <string name="location_neighborhood_level_wifi">Location determined by Wi\u2011Fi</string>
     <!-- [CHAR LIMIT=30] Security & location settings screen, setting check box label for GPS satellites -->
     <string name="location_gps">GPS satellites</string>
+    <!-- [CHAR LIMIT=100] Security & location settings screen, setting check box summary for GPS satellites on a media box -->
+    <string name="location_street_level" product="mbx">Let apps use GPS on your media box to pinpoint your location</string>
     <!-- [CHAR LIMIT=100] Security & location settings screen, setting check box summary for GPS satellites on a tablet -->
     <string name="location_street_level" product="tablet">Let apps use GPS on your tablet to pinpoint your location</string>
+    <!-- [CHAR LIMIT=100] Security & location settings screen, setting check box summary for GPS satellites on a tv -->
+    <string name="location_street_level" product="tv">Let apps use GPS on your TV to pinpoint your location</string>
     <!-- [CHAR LIMIT=100] Security & location settings screen, setting check box summary for GPS satellites on a phone -->
     <string name="location_street_level" product="default">Let apps use GPS on your phone to pinpoint your location</string>
     <!-- Security & location settings screen, setting check box label if Assisted GPS should be enabled -->
@@ -2992,7 +3202,11 @@
 
     <!-- About --> <skip />
     <!-- Main settings screen, setting title for the user to go into the About phone screen -->
+    <string name="about_settings" product="mbx">About media box</string>
+    <!-- Main settings screen, setting title for the user to go into the About phone screen -->
     <string name="about_settings" product="tablet">About tablet</string>
+    <!-- Main settings screen, setting title for the user to go into the About phone screen -->
+    <string name="about_settings" product="tv">About TV</string>
     <!-- Main settings screen, setting title for the user to go into the About phone screen -->
     <string name="about_settings" product="default">About phone</string>
     <!-- Main settings screen, setting title for the user to go into the About phone screen -->
@@ -3213,7 +3427,17 @@
     <!-- Applications settings screen, setting check box summary.  This is the summary for "Unknown sources" checkbox  -->
     <string name="install_unknown_applications">Allow installation of apps from unknown sources</string>
     <!-- Applications settings screen, message text of alert that appears if user selects the "Unknown sources" check box -->
+    <string name="install_all_warning" product="mbx">Your media box and personal data are more vulnerable to attack by apps
+ from unknown sources. You agree that you are solely responsible for any
+ damage to your tablet or loss of data that may result from using
+ these apps.</string>
+    <!-- Applications settings screen, message text of alert that appears if user selects the "Unknown sources" check box -->
     <string name="install_all_warning" product="tablet">Your tablet and personal data are more vulnerable to attack by apps
+ from unknown sources. You agree that you are solely responsible for any
+ damage to your tablet or loss of data that may result from using
+ these apps.</string>
+    <!-- Applications settings screen, message text of alert that appears if user selects the "Unknown sources" check box -->
+    <string name="install_all_warning" product="tv">Your TV and personal data are more vulnerable to attack by apps
  from unknown sources. You agree that you are solely responsible for any
  damage to your tablet or loss of data that may result from using
  these apps.</string>
@@ -3381,13 +3605,31 @@
     <!-- Manage applications, text for dialog if clear data fails-->
     <string name="clear_failed_dlg_text">Couldn\u2019t clear data for app.</string>
     <!-- Manage applications, individual application info screen, text that appears under the "Permissions" heading. This describes the permissions that the application has. -->
+    <string name="security_settings_desc" product="mbx">This app can access the following on your media box:</string>
+    <!-- Manage applications, individual application info screen, text that appears under the "Permissions" heading. This describes the permissions that the application has. -->
     <string name="security_settings_desc" product="tablet">This app can access the following on your tablet:</string>
+    <!-- Manage applications, individual application info screen, text that appears under the "Permissions" heading. This describes the permissions that the application has. -->
+    <string name="security_settings_desc" product="tv">This app can access the following on your TV:</string>
     <!-- Manage applications, individual application info screen, text that appears under the "Permissions" heading. This describes the permissions that the application has. -->
     <string name="security_settings_desc" product="default">This app can access the following on your phone:</string>
     <!-- [CHAR_LIMIT=NONE] Manage applications, individual application info screen, text that appears under the "Permissions" heading.
          This describes the permissions that the application has.  It is used when multiple packages are contributing
          to the permissions and need to be listed here. -->
+    <string name="security_settings_desc_multi" product="mbx">This app can access the following on your media box.
+         In order to improve performance and reduce memory usage, some of these permissions
+         are available to <xliff:g id="base_app_name">%1$s</xliff:g>
+         because it runs in the same process as <xliff:g id="additional_apps_list">%2$s</xliff:g>:</string>
+    <!-- [CHAR_LIMIT=NONE] Manage applications, individual application info screen, text that appears under the "Permissions" heading.
+         This describes the permissions that the application has.  It is used when multiple packages are contributing
+         to the permissions and need to be listed here. -->
     <string name="security_settings_desc_multi" product="tablet">This app can access the following on your tablet.
+         In order to improve performance and reduce memory usage, some of these permissions
+         are available to <xliff:g id="base_app_name">%1$s</xliff:g>
+         because it runs in the same process as <xliff:g id="additional_apps_list">%2$s</xliff:g>:</string>
+    <!-- [CHAR_LIMIT=NONE] Manage applications, individual application info screen, text that appears under the "Permissions" heading.
+         This describes the permissions that the application has.  It is used when multiple packages are contributing
+         to the permissions and need to be listed here. -->
+    <string name="security_settings_desc_multi" product="tv">This app can access the following on your TV.
          In order to improve performance and reduce memory usage, some of these permissions
          are available to <xliff:g id="base_app_name">%1$s</xliff:g>
          because it runs in the same process as <xliff:g id="additional_apps_list">%2$s</xliff:g>:</string>
@@ -3421,7 +3663,11 @@
     <!-- Manage applications, text for Move button -->
     <string name="move_app">Move</string>
     <!-- Manage applications, text for Move button to move app to internal storage -->
+    <string name="move_app_to_internal" product="mbx">Move to media box</string>
+    <!-- Manage applications, text for Move button to move app to internal storage -->
     <string name="move_app_to_internal" product="tablet">Move to tablet</string>
+    <!-- Manage applications, text for Move button to move app to internal storage -->
+    <string name="move_app_to_internal" product="tv">Move to TV</string>
     <!-- Manage applications, text for Move button to move app to internal storage -->
     <string name="move_app_to_internal" product="default">Move to phone</string>
     <!-- Manage applications, text for Move button  to move app to sdcard [CHAR LIMIT=25] -->
@@ -3590,8 +3836,16 @@
     <!-- Running service details, stop confirmation dialog title. Displays when user selects selects to stop a system service. -->
     <string name="runningservicedetails_stop_dlg_title">Stop system service?</string>
     <!-- Running service details, stop confirmation descriptive text. Displays when user selects selects to stop a system service. -->
+    <string name="runningservicedetails_stop_dlg_text" product="mbx">If you stop this service, some
+        features of your media box may stop working correctly until you power it off
+        and then on again.</string>
+    <!-- Running service details, stop confirmation descriptive text. Displays when user selects selects to stop a system service. -->
     <string name="runningservicedetails_stop_dlg_text" product="tablet">If you stop this service, some
         features of your tablet may stop working correctly until you power it off
+        and then on again.</string>
+    <!-- Running service details, stop confirmation descriptive text. Displays when user selects selects to stop a system service. -->
+    <string name="runningservicedetails_stop_dlg_text" product="tv">If you stop this service, some
+        features of your TV may stop working correctly until you power it off
         and then on again.</string>
     <!-- Running service details, stop confirmation descriptive text. Displays when user selects selects to stop a system service. -->
     <string name="runningservicedetails_stop_dlg_text" product="default">If you stop this service, some
@@ -3743,7 +3997,11 @@
     <!-- This is for diagnostics screen. The title of a screen with various items realted to launching screens that will giev the user info. For example, it contains "Phone information" and "Battery information" -->
     <string name="testing">Testing</string>
     <!-- In the Testing screen.  The item title of the activity that shows a bunch of phone-related information.  -->
+    <string name="testing_phone_info" product="mbx">Media box information</string>
+    <!-- In the Testing screen.  The item title of the activity that shows a bunch of phone-related information.  -->
     <string name="testing_phone_info" product="tablet">Tablet information</string>
+    <!-- In the Testing screen.  The item title of the activity that shows a bunch of phone-related information.  -->
+    <string name="testing_phone_info" product="tv">TV information</string>
     <!-- In the Testing screen.  The item title of the activity that shows a bunch of phone-related information.  -->
     <string name="testing_phone_info" product="default">Phone information</string>
     <!-- Do not translate. In the Testing screen. The item title of the activity that shows a bunch of SIM-related operations.  -->
@@ -4230,7 +4488,11 @@
     <!-- Label for power consumed by Calling -->
     <string name="power_phone">Voice calls</string>
     <!-- Label for power consumed when Idle -->
+    <string name="power_idle" product="mbx">Media box idle</string>
+    <!-- Label for power consumed when Idle -->
     <string name="power_idle" product="tablet">Tablet idle</string>
+    <!-- Label for power consumed when Idle -->
+    <string name="power_idle" product="tv">TV idle</string>
     <!-- Label for power consumed when Idle -->
     <string name="power_idle" product="default">Phone idle</string>
     <!-- Label for power that we aren't able to account for -->
@@ -4249,7 +4511,11 @@
     <!-- [CHAR LIMIT=25] Label for WIFI usage time -->
     <string name="usage_type_wifi_running">Wi\u2011Fi running</string>
     <!-- Label for Phone usage time -->
+    <string name="usage_type_phone" product="mbx">Media box</string>
+    <!-- Label for Phone usage time -->
     <string name="usage_type_phone" product="tablet">Tablet</string>
+    <!-- Label for Phone usage time -->
+    <string name="usage_type_phone" product="tv">TV</string>
     <!-- Label for Phone usage time -->
     <string name="usage_type_phone" product="default">Phone</string>
     <!-- Label for mobile network data sent [CHAR LIMIT=32] -->
@@ -4298,7 +4564,11 @@
     <string name="battery_desc_voice">Battery used by voice calls</string>
 
     <!-- Description for standby detail -->
+    <string name="battery_desc_standby" product="mbx">Battery used when media box is idle</string>
+    <!-- Description for standby detail -->
     <string name="battery_desc_standby" product="tablet">Battery used when tablet is idle</string>
+    <!-- Description for standby detail -->
+    <string name="battery_desc_standby" product="tv">Battery used when TV is idle</string>
     <!-- Description for standby detail -->
     <string name="battery_desc_standby" product="default">Battery used when phone is idle</string>
 
@@ -4906,7 +5176,11 @@
     <!-- Title of remove message for remove account dialog -->
     <string name="really_remove_account_title">Remove account?</string>
     <!-- Remove account message in dialog [CHAR LIMIT=NONE] -->
+    <string name="really_remove_account_message" product="mbx">Removing this account will delete all of its messages, contacts, and other data from the media box!</string>
+    <!-- Remove account message in dialog [CHAR LIMIT=NONE] -->
     <string name="really_remove_account_message" product="tablet">Removing this account will delete all of its messages, contacts, and other data from the tablet!</string>
+    <!-- Remove account message in dialog [CHAR LIMIT=NONE] -->
+    <string name="really_remove_account_message" product="tv">Removing this account will delete all of its messages, contacts, and other data from the TV!</string>
     <!-- Remove account message in dialog [CHAR LIMIT=NONE] -->
     <string name="really_remove_account_message" product="default">Removing this account will delete all of its messages, contacts, and other data from the phone!</string>
     <!-- This is shown if the autheticator for a given account fails to remove it. [CHAR LIMIT=NONE] -->
@@ -5074,8 +5348,12 @@
     <string name="data_usage_restrict_denied_dialog">Restricting background data is possible only when you\u2019ve set a cellular data limit.</string>
     <!--  Title of dialog shown when user enables global auto sync [CHAR LIMIT=32] -->
     <string name="data_usage_auto_sync_on_dialog_title">Turn auto-sync data on?</string>
+    <!--  Body of dialog shown when user enables global auto sync, for media box [CHAR LIMIT=none] -->
+    <string name="data_usage_auto_sync_on_dialog" product="mbx">Any changes you make to your accounts on the web will be automatically copied to your media box.\n\nSome accounts may also automatically copy any changes you make on the media box to the web. A Google Account works this way.</string>
     <!--  Body of dialog shown when user enables global auto sync, for tablet [CHAR LIMIT=none] -->
     <string name="data_usage_auto_sync_on_dialog" product="tablet">Any changes you make to your accounts on the web will be automatically copied to your tablet.\n\nSome accounts may also automatically copy any changes you make on the tablet to the web. A Google Account works this way.</string>
+    <!--  Body of dialog shown when user enables global auto sync, for TV [CHAR LIMIT=none] -->
+    <string name="data_usage_auto_sync_on_dialog" product="tv">Any changes you make to your accounts on the web will be automatically copied to your TV.\n\nSome accounts may also automatically copy any changes you make on the TV to the web. A Google Account works this way.</string>
     <!--  Body of dialog shown when user enables global auto sync [CHAR LIMIT=none] -->
     <string name="data_usage_auto_sync_on_dialog" product="default">Any changes you make to your accounts on the web will be automatically copied to your phone.\n\nSome accounts may also automatically copy any changes you make on the phone to the web. A Google Account works this way.</string>
     <!--  Title of dialog shown when user disables global auto sync [CHAR LIMIT=32] -->
@@ -5098,7 +5376,11 @@
     <!-- Title of dialog shown before user limits data usage. [CHAR LIMIT=48] -->
     <string name="data_usage_limit_dialog_title">Limiting data usage</string>
     <!-- Body of dialog shown before user limits mobile data usage. [CHAR LIMIT=NONE] -->
+    <string name="data_usage_limit_dialog_mobile" product="mbx">Your media box will turn off cellular data once it reaches the limit you set.\n\nSince data usage is measured by your media box, and your carrier may account for usage differently, consider setting a conservative limit.</string>
+    <!-- Body of dialog shown before user limits mobile data usage. [CHAR LIMIT=NONE] -->
     <string name="data_usage_limit_dialog_mobile" product="tablet">Your tablet will turn off cellular data once it reaches the limit you set.\n\nSince data usage is measured by your tablet, and your carrier may account for usage differently, consider setting a conservative limit.</string>
+    <!-- Body of dialog shown before user limits mobile data usage. [CHAR LIMIT=NONE] -->
+    <string name="data_usage_limit_dialog_mobile" product="tv">Your TV will turn off cellular data once it reaches the limit you set.\n\nSince data usage is measured by your TV, and your carrier may account for usage differently, consider setting a conservative limit.</string>
     <!-- Body of dialog shown before user limits mobile data usage. [CHAR LIMIT=NONE] -->
     <string name="data_usage_limit_dialog_mobile" product="default">Your phone will turn off cellular data once it reaches the limit you set.\n\nSince data usage is measured by your phone, and your carrier may account for usage differently, consider setting a conservative limit.</string>
 
@@ -5106,8 +5388,12 @@
     <string name="data_usage_restrict_background_title">Restrict background data?</string>
     <!-- Body of dialog shown before user restricts background data usage. [CHAR LIMIT=NONE] -->
     <string name="data_usage_restrict_background">If you restrict background cellular data, some apps and services won\u2019t work unless you\u2019re connected to Wi\u2011Fi.</string>
+    <!-- Body of dialog shown before user restricts background data usage. This is for multiuser media box. [CHAR LIMIT=NONE] -->
+    <string name="data_usage_restrict_background_multiuser" product="mbx">If you restrict background cellular data, some apps and services won\u2019t work unless you\u2019re connected to Wi\u2011Fi.\n\nThis setting affects all users on this media box.</string>
     <!-- Body of dialog shown before user restricts background data usage. This is for multiuser tablets. [CHAR LIMIT=NONE] -->
     <string name="data_usage_restrict_background_multiuser" product="tablet">If you restrict background cellular data, some apps and services won\u2019t work unless you\u2019re connected to Wi\u2011Fi.\n\nThis setting affects all users on this tablet.</string>
+    <!-- Body of dialog shown before user restricts background data usage. This is for multiuser TV. [CHAR LIMIT=NONE] -->
+    <string name="data_usage_restrict_background_multiuser" product="tv">If you restrict background cellular data, some apps and services won\u2019t work unless you\u2019re connected to Wi\u2011Fi.\n\nThis setting affects all users on this TV.</string>
     <!-- Body of dialog shown before user restricts background data usage. This is for multiuser phones. [CHAR LIMIT=NONE] -->
     <string name="data_usage_restrict_background_multiuser" product="default">If you restrict background cellular data, some apps and services won\u2019t work unless you\u2019re connected to Wi\u2011Fi.\n\nThis setting affects all users on this phone.</string>
 
@@ -5128,7 +5414,11 @@
     <string name="data_usage_total_during_range"><xliff:g id="range" example="Jul 1 - Jul 31">%2$s</xliff:g>: about <xliff:g id="total" example="128KB">%1$s</xliff:g> used.</string>
 
     <!-- Label displaying total network data transferred during a specific time period, including a disclaimer that contrasts device versus carrier reporting. [CHAR LIMIT=80] -->
+    <string name="data_usage_total_during_range_mobile" product="mbx"><xliff:g id="range" example="Jul 1 - Jul 31">%2$s</xliff:g>: about <xliff:g id="total" example="128KB">%1$s</xliff:g> used, as measured by your media box. Your carrier\u2019s data usage accounting may differ.</string>
+    <!-- Label displaying total network data transferred during a specific time period, including a disclaimer that contrasts device versus carrier reporting. [CHAR LIMIT=80] -->
     <string name="data_usage_total_during_range_mobile" product="tablet"><xliff:g id="range" example="Jul 1 - Jul 31">%2$s</xliff:g>: about <xliff:g id="total" example="128KB">%1$s</xliff:g> used, as measured by your tablet. Your carrier\u2019s data usage accounting may differ.</string>
+    <!-- Label displaying total network data transferred during a specific time period, including a disclaimer that contrasts device versus carrier reporting. [CHAR LIMIT=80] -->
+    <string name="data_usage_total_during_range_mobile" product="tv"><xliff:g id="range" example="Jul 1 - Jul 31">%2$s</xliff:g>: about <xliff:g id="total" example="128KB">%1$s</xliff:g> used, as measured by your TV. Your carrier\u2019s data usage accounting may differ.</string>
     <!-- Label displaying total network data transferred during a specific time period, including a disclaimer that contrasts device versus carrier reporting. [CHAR LIMIT=80] -->
     <string name="data_usage_total_during_range_mobile" product="default"><xliff:g id="range" example="Jul 1 - Jul 31">%2$s</xliff:g>: about <xliff:g id="total" example="128KB">%1$s</xliff:g> used, as measured by your phone. Your carrier\u2019s data usage accounting may differ.</string>
 
@@ -5394,7 +5684,11 @@
     <!-- Button text to setup the new user later [CHAR LIMIT=25] -->
     <string name="user_setup_button_setup_later">Not now</string>
     <!-- Message to secondary users that only owner can manage users [CHAR LIMIT=none] -->
+    <string name="user_cannot_manage_message" product="mbx">Only the media box\u2019s owner can manage users.</string>
+    <!-- Message to secondary users that only owner can manage users [CHAR LIMIT=none] -->
     <string name="user_cannot_manage_message" product="tablet">Only the tablet\u2019s owner can manage users.</string>
+    <!-- Message to secondary users that only owner can manage users [CHAR LIMIT=none] -->
+    <string name="user_cannot_manage_message" product="tv">Only the TV\u2019s owner can manage users.</string>
     <!-- Message to secondary users that only owner can manage users [CHAR LIMIT=none] -->
     <string name="user_cannot_manage_message" product="default">Only the phone\u2019s owner can manage users.</string>
     <!-- Message to limited users that they cannot add accounts [CHAR LIMIT=100] -->
@@ -5421,7 +5715,11 @@
     <!-- Work profile removal confirmation title [CHAR LIMIT=25] -->
     <string name="work_profile_confirm_remove_title">Remove work profile?</string>
     <!-- User (self) removal confirmation message [CHAR LIMIT=none] -->
+    <string name="user_confirm_remove_self_message" product="mbx">You will lose your space and data on this media box. You can\u2019t undo this action.</string>
+    <!-- User (self) removal confirmation message [CHAR LIMIT=none] -->
     <string name="user_confirm_remove_self_message" product="tablet">You will lose your space and data on this tablet. You can\u2019t undo this action.</string>
+    <!-- User (self) removal confirmation message [CHAR LIMIT=none] -->
+    <string name="user_confirm_remove_self_message" product="tv">You will lose your space and data on this TV. You can\u2019t undo this action.</string>
     <!-- User (self) removal confirmation message [CHAR LIMIT=none] -->
     <string name="user_confirm_remove_self_message" product="default">You will lose your space and data on this phone. You can\u2019t undo this action.</string>
     <!-- User removal confirmation message [CHAR LIMIT=none] -->
@@ -5477,8 +5775,12 @@
     <!-- Message to user that Home Settings will be hidden because there is now only one available home application -->
     <string name="only_one_home_message">Home settings will be hidden until you install another home application.</string>
 
+    <!-- Warning message when changing a global setting for a media box.[CHAR LIMIT=none] -->
+    <string name="global_change_warning" product="mbx">This setting affects all users on this media box.</string>
     <!-- Warning message when changing a global setting for a tablet.[CHAR LIMIT=none] -->
     <string name="global_change_warning" product="tablet">This setting affects all users on this tablet.</string>
+    <!-- Warning message when changing a global setting for a TV.[CHAR LIMIT=none] -->
+    <string name="global_change_warning" product="tv">This setting affects all users on this TV.</string>
     <!-- Warning message when changing a global setting for a phone.[CHAR LIMIT=none] -->
     <string name="global_change_warning" product="default">This setting affects all users on this phone.</string>
     <!-- Warning message title for global locale change [CHAR LIMIT=40] -->
@@ -5672,8 +5974,12 @@
     <string name="restriction_nfc_enable_title">NFC</string>
     <!-- Restrictions summary for allowing NFC transfers (tablet) [CHAR LIMIT=100] -->
     <string name="restriction_nfc_enable_summary_config">Allow data exchange when this <xliff:g id="device_name">%1$s</xliff:g> touches another NFC device</string>
+    <!-- Restrictions summary for allowing NFC transfers (media box) [CHAR LIMIT=100] -->
+    <string name="restriction_nfc_enable_summary" product="mbx">Allow data exchange when the media box touches another device</string>
     <!-- Restrictions summary for allowing NFC transfers (tablet) [CHAR LIMIT=100] -->
     <string name="restriction_nfc_enable_summary" product="tablet">Allow data exchange when the tablet touches another device</string>
+    <!-- Restrictions summary for allowing NFC transfers (TV) [CHAR LIMIT=100] -->
+    <string name="restriction_nfc_enable_summary" product="tv">Allow data exchange when the TV touches another device</string>
     <!-- Restrictions summary for allowing NFC transfers (phone) [CHAR LIMIT=100] -->
     <string name="restriction_nfc_enable_summary" product="default">Allow data exchange when the phone touches another device</string>
     <!-- Restrictions title for allowing location sharing [CHAR LIMIT=35] -->
