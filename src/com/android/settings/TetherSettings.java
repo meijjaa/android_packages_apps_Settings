@@ -34,18 +34,17 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.os.SystemProperties;
 import android.os.UserManager;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
-import android.telephony.CarrierConfigManager;
 import android.util.Log;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.datausage.DataSaverBackend;
 import com.android.settings.wifi.WifiApDialog;
 import com.android.settings.wifi.WifiApEnabler;
+import com.android.settingslib.TetherUtil;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -502,26 +501,8 @@ public class TetherSettings extends RestrictedSettingsFragment
         return false;
     }
 
-    private static boolean isProvisioningNeeded(Context context) {
-        String[] provisionApp = context.getResources().getStringArray(
-                com.android.internal.R.array.config_mobile_hotspot_provision_app);
-        if (SystemProperties.getBoolean("net.tethering.noprovisioning", false)
-                || provisionApp == null) {
-            return false;
-        }
-        // Check carrier config for entitlement checks
-        final CarrierConfigManager configManager = (CarrierConfigManager) context
-             .getSystemService(Context.CARRIER_CONFIG_SERVICE);
-        if (configManager.getConfig() != null &&
-            !configManager.getConfig().getBoolean(CarrierConfigManager
-                .KEY_REQUIRE_ENTITLEMENT_CHECKS_BOOL)) {
-            return false;
-        }
-        return (provisionApp.length == 2);
-    }
-
     public static boolean isProvisioningNeededButUnavailable(Context context) {
-        return (isProvisioningNeeded(context)
+        return (TetherUtil.isProvisioningNeeded(context)
                 && !isIntentAvailable(context));
     }
 
