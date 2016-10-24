@@ -90,10 +90,11 @@
                 android:fragment="com.android.settings.accessibility.ToggleFontSizePreferenceFragment"
                 settings:keywords="@string/keywords_display_font_size" />
 
-        <com.android.settings.display.ScreenZoomPreference
+      <!--  <com.android.settings.display.ScreenZoomPreference
                 android:key="screen_zoom"
                 android:title="@string/screen_zoom_title"
                 settings:keywords="@string/screen_zoom_keywords" />
+                -->
 
         <DropDownPreference
                 android:key="auto_rotate"
