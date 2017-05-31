@@ -91,6 +91,8 @@ import android.widget.TabWidget;
 import com.android.internal.app.UnlaunchableAppActivity;
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.UserIcons;
+import com.android.settings.bluetooth.BluetoothSettings;
+import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.internal.widget.LockPatternUtils;
 
 import java.io.IOException;
@@ -102,6 +104,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static android.content.Intent.EXTRA_USER;
+import static android.content.Intent.EXTRA_USER_ID;
 import static android.text.format.DateUtils.FORMAT_ABBREV_MONTH;
 import static android.text.format.DateUtils.FORMAT_SHOW_DATE;
 
@@ -462,6 +465,11 @@ public final class Utils extends com.android.settingslib.Utils {
                 .getUsers().size() > 1;
     }
 
+    public static boolean isRestrictedProfile(Context context) {
+        UserManager um = (UserManager) context.getSystemService(Context.USER_SERVICE);
+        return um.getUserInfo(um.getUserHandle()).isRestricted();
+    }
+
     /**
      * Start a new instance of the activity, showing only the given fragment.
      * When launched in this mode, the given preference fragment will be instantiated and fill the
@@ -582,7 +590,15 @@ public final class Utils extends com.android.settingslib.Utils {
             Bundle args, String titleResPackageName, int titleResId, CharSequence title,
             boolean isShortcut) {
         Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.setClass(context, SubSettings.class);
+        if (BluetoothSettings.class.getName().equals(fragmentName)) {
+            intent.setClass(context, SubSettings.BluetoothSubSettings.class);
+            intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_AS_SUBSETTING, true);
+         } else if(SavedAccessPointsWifiSettings.class.getName().equals(fragmentName)) {
+            intent.setClass(context, SubSettings.SavedAccessPointsSubSettings.class);
+            intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_AS_SUBSETTING, true);
+        }else {
+             intent.setClass(context, SubSettings.class);
+         }
         intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT, fragmentName);
         intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_ARGUMENTS, args);
         intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_TITLE_RES_PACKAGE_NAME,
@@ -651,16 +667,21 @@ public final class Utils extends com.android.settingslib.Utils {
 
     /**
      * Returns the target user for a Settings activity.
-     *
-     * The target user can be either the current user, the user that launched this activity or
-     * the user contained as an extra in the arguments or intent extras.
-     *
+     * <p>
+     * User would be retrieved in this order:
+     * <ul>
+     * <li> If this activity is launched from other user, return that user id.
+     * <li> If this is launched from the Settings app in same user, return the user contained as an
+     *      extra in the arguments or intent extras.
+     * <li> Otherwise, return UserHandle.myUserId().
+     * </ul>
+     * <p>
      * Note: This is secure in the sense that it only returns a target user different to the current
      * one if the app launching this activity is the Settings app itself, running in the same user
      * or in one that is in the same profile group, or if the user id is provided by the system.
      */
     public static UserHandle getSecureTargetUser(IBinder activityToken,
-           UserManager um, @Nullable Bundle arguments, @Nullable Bundle intentExtras) {
+            UserManager um, @Nullable Bundle arguments, @Nullable Bundle intentExtras) {
         UserHandle currentUser = new UserHandle(UserHandle.myUserId());
         IActivityManager am = ActivityManagerNative.getDefault();
         try {
@@ -675,16 +696,14 @@ public final class Utils extends com.android.settingslib.Utils {
                     return launchedFromUser;
                 }
             }
-            UserHandle extrasUser = intentExtras != null
-                    ? (UserHandle) intentExtras.getParcelable(EXTRA_USER) : null;
+            UserHandle extrasUser = getUserHandleFromBundle(intentExtras);
             if (extrasUser != null && !extrasUser.equals(currentUser)) {
                 // Check it's secure
                 if (launchedFromSettingsApp && isProfileOf(um, extrasUser)) {
                     return extrasUser;
                 }
             }
-            UserHandle argumentsUser = arguments != null
-                    ? (UserHandle) arguments.getParcelable(EXTRA_USER) : null;
+            UserHandle argumentsUser = getUserHandleFromBundle(arguments);
             if (argumentsUser != null && !argumentsUser.equals(currentUser)) {
                 // Check it's secure
                 if (launchedFromSettingsApp && isProfileOf(um, argumentsUser)) {
@@ -696,7 +715,26 @@ public final class Utils extends com.android.settingslib.Utils {
             Log.v(TAG, "Could not talk to activity manager.", e);
         }
         return currentUser;
-   }
+    }
+
+    /**
+     * Lookup both {@link Intent#EXTRA_USER} and {@link Intent#EXTRA_USER_ID} in the bundle
+     * and return the {@link UserHandle} object. Return {@code null} if nothing is found.
+     */
+    private static @Nullable UserHandle getUserHandleFromBundle(Bundle bundle) {
+        if (bundle == null) {
+            return null;
+        }
+        final UserHandle user = bundle.getParcelable(EXTRA_USER);
+        if (user != null) {
+            return user;
+        }
+        final int userId = bundle.getInt(EXTRA_USER_ID, -1);
+        if (userId != -1) {
+            return UserHandle.of(userId);
+        }
+        return null;
+    }
 
     /**
      * Returns the target user for a Settings activity.
@@ -780,6 +818,19 @@ public final class Utils extends com.android.settingslib.Utils {
                 (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
         return tm.getSimCount() > 1;
+    }
+
+    /**
+     * Returns if need show the account with the given account type.
+     */
+    public static boolean showAccount(Context context, String accountType) {
+        String[] hideAccounts = context.getResources().getStringArray(R.array.hide_account_list);
+        if (hideAccounts == null || hideAccounts.length == 0) return true;
+
+        for (String account : hideAccounts) {
+            if (account.equals(accountType)) return false;
+        }
+        return true;
     }
 
     /**
@@ -1183,5 +1234,36 @@ public final class Utils extends com.android.settingslib.Utils {
         } catch (NameNotFoundException ignored) {
         }
         return false;
+    }
+
+    public static String join(Resources res, List<String> items) {
+        final int count = items.size();
+        if (items.isEmpty()) {
+            return null;
+        } else if (count == 1) {
+            return items.get(0);
+        } else if (count == 2) {
+            return res.getString(R.string.join_two_items, items.get(0), items.get(1));
+        } else {
+            String middle = items.get(count - 2);
+            for (int i = count - 3; i > 0; i--) {
+                middle = res.getString(R.string.join_many_items_middle,
+                        items.get(i), middle);
+            }
+            final String allButLast = res.getString(R.string.join_many_items_first,
+                    items.get(0), middle);
+            return res.getString(R.string.join_many_items_last, allButLast,
+                    items.get(count - 1));
+        }
+    }
+
+    public static boolean isCarrierDemoUser(Context context) {
+        final String carrierDemoModeSetting =
+                context.getString(com.android.internal.R.string.config_carrierDemoModeSetting);
+        return UserManager.isDeviceInDemoMode(context)
+                && getUserManager(context).isDemoUser()
+                && !TextUtils.isEmpty(carrierDemoModeSetting)
+                && Settings.Secure.getInt(
+                        context.getContentResolver(), carrierDemoModeSetting, 0) == 1;
     }
 }

@@ -33,6 +33,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.UserInfo;
+import android.content.res.Resources;
 import android.hardware.fingerprint.Fingerprint;
 import android.hardware.fingerprint.FingerprintManager;
 import android.hardware.fingerprint.FingerprintManager.RemovalCallback;
@@ -43,18 +44,25 @@ import android.os.storage.StorageManager;
 import android.security.KeyStore;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.EventLog;
 import android.util.Log;
 import android.view.accessibility.AccessibilityManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.internal.widget.LockPatternUtils;
+import com.android.settings.utils.SettingsDividerItemDecoration;
 import com.android.settings.fingerprint.FingerprintEnrollBase;
 import com.android.settings.fingerprint.FingerprintEnrollFindSensor;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedPreference;
+import com.android.setupwizardlib.GlifPreferenceLayout;
 
 import java.util.List;
 
@@ -78,6 +86,13 @@ public class ChooseLockGeneric extends SettingsActivity {
     protected boolean isValidFragment(String fragmentName) {
         if (ChooseLockGenericFragment.class.getName().equals(fragmentName)) return true;
         return false;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstance) {
+        super.onCreate(savedInstance);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.content_parent);
+        layout.setFitsSystemWindows(false);
     }
 
     /* package */ Class<? extends Fragment> getFragmentClass() {
@@ -148,6 +163,8 @@ public class ChooseLockGeneric extends SettingsActivity {
             mKeyStore = KeyStore.getInstance();
             mChooseLockSettingsHelper = new ChooseLockSettingsHelper(this.getActivity());
             mLockPatternUtils = new LockPatternUtils(getActivity());
+
+            mLockPatternUtils.sanitizePassword();
             mIsSetNewPassword = ACTION_SET_NEW_PARENT_PROFILE_PASSWORD.equals(chooseLockAction)
                     || ACTION_SET_NEW_PASSWORD.equals(chooseLockAction);
 
@@ -186,22 +203,15 @@ public class ChooseLockGeneric extends SettingsActivity {
                         ENCRYPT_REQUESTED_DISABLED);
             }
 
-            int targetUser = Utils.getSecureTargetUser(
+            // a) If this is started from other user, use that user id.
+            // b) If this is started from the same user, read the extra if this is launched
+            //    from Settings app itself.
+            // c) Otherwise, use UserHandle.myUserId().
+            mUserId = Utils.getSecureTargetUser(
                     getActivity().getActivityToken(),
                     UserManager.get(getActivity()),
-                    null,
+                    getArguments(),
                     getActivity().getIntent().getExtras()).getIdentifier();
-            if (ACTION_SET_NEW_PARENT_PROFILE_PASSWORD.equals(chooseLockAction)
-                    || !mLockPatternUtils.isSeparateProfileChallengeAllowed(targetUser)) {
-                // Always use parent if explicitely requested or if profile challenge is not
-                // supported
-                Bundle arguments = getArguments();
-                mUserId = Utils.getUserIdFromBundle(getContext(), arguments != null ? arguments
-                        : getActivity().getIntent().getExtras());
-            } else {
-                mUserId = targetUser;
-            }
-
             if (ACTION_SET_NEW_PASSWORD.equals(chooseLockAction)
                     && Utils.isManagedProfile(UserManager.get(getActivity()), mUserId)
                     && mLockPatternUtils.isSeparateProfileChallengeEnabled(mUserId)) {
@@ -245,6 +255,32 @@ public class ChooseLockGeneric extends SettingsActivity {
         }
 
         @Override
+        public void onViewCreated(View view, Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
+            if (mForFingerprint) {
+                GlifPreferenceLayout layout = (GlifPreferenceLayout) view;
+                layout.setDividerItemDecoration(new SettingsDividerItemDecoration(getContext()));
+
+                layout.setIcon(getContext().getDrawable(R.drawable.ic_lock));
+                layout.setHeaderText(getActivity().getTitle());
+
+                // Use the dividers in SetupWizardRecyclerLayout. Suppress the dividers in
+                // PreferenceFragment.
+                setDivider(null);
+            }
+        }
+
+        @Override
+        public RecyclerView onCreateRecyclerView(LayoutInflater inflater, ViewGroup parent,
+                Bundle savedInstanceState) {
+            if (mForFingerprint) {
+                GlifPreferenceLayout layout = (GlifPreferenceLayout) parent;
+                return layout.onCreateRecyclerView(inflater, parent, savedInstanceState);
+            }
+            return super.onCreateRecyclerView(inflater, parent, savedInstanceState);
+        }
+
+        @Override
         public boolean onPreferenceTreeClick(Preference preference) {
             final String key = preference.getKey();
 
@@ -256,6 +292,8 @@ public class ChooseLockGeneric extends SettingsActivity {
             } else if (KEY_SKIP_FINGERPRINT.equals(key)) {
                 Intent chooseLockGenericIntent = new Intent(getActivity(), ChooseLockGeneric.class);
                 chooseLockGenericIntent.setAction(getIntent().getAction());
+                // Forward the target user id to  ChooseLockGeneric.
+                chooseLockGenericIntent.putExtra(Intent.EXTRA_USER_ID, mUserId);
                 chooseLockGenericIntent.putExtra(PASSWORD_CONFIRMED, mPasswordConfirmed);
                 startActivityForResult(chooseLockGenericIntent, SKIP_FINGERPRINT_REQUEST);
                 return true;
@@ -343,6 +381,8 @@ public class ChooseLockGeneric extends SettingsActivity {
                 if (data != null) {
                     intent.putExtras(data.getExtras());
                 }
+                // Forward the target user id to fingerprint setup page.
+                intent.putExtra(Intent.EXTRA_USER_ID, mUserId);
                 startActivity(intent);
                 finish();
             } else if (requestCode == SKIP_FINGERPRINT_REQUEST) {
@@ -408,12 +448,16 @@ public class ChooseLockGeneric extends SettingsActivity {
                 final String key[] = { KEY_UNLOCK_SET_PATTERN,
                         KEY_UNLOCK_SET_PIN,
                         KEY_UNLOCK_SET_PASSWORD };
+                final int icon[] = { R.drawable.ic_security_pattern,
+                        R.drawable.ic_security_pin,
+                        R.drawable.ic_security_pwd};
                 final int res[] = { R.string.fingerprint_unlock_set_unlock_pattern,
                         R.string.fingerprint_unlock_set_unlock_pin,
                         R.string.fingerprint_unlock_set_unlock_password };
                 for (int i = 0; i < key.length; i++) {
                     Preference pref = findPreference(key[i]);
                     if (pref != null) { // can be removed by device admin
+                        pref.setIcon(icon[i]);
                         pref.setTitle(res[i]);
                     }
                 }
@@ -777,6 +821,7 @@ public class ChooseLockGeneric extends SettingsActivity {
         @Override
         public void onDestroy() {
             super.onDestroy();
+            mLockPatternUtils.sanitizePassword();
         }
 
         @Override
